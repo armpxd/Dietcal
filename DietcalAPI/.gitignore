@@ -352,3 +352,5 @@ MigrationBackup/
 #Publish File
 .PublishSettings
 
+#migraciones
+Migrations
