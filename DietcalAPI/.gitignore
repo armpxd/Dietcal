@@ -352,6 +352,3 @@ MigrationBackup/
 #Publish File
 .PublishSettings
 
-#Visual Code 
-.vscode
-.vs
