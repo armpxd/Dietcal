@@ -15,12 +15,13 @@ namespace DietcalAPI.Services
         {
             _configuration = Iconfig;
         }
-        public void RecoverPassword (string to)
+        public string RecoverPassword (string to)
         {
+            string NewPassword= ChangePassword.newpassword();
             using (MailMessage message = new MailMessage (_configuration.GetSection("MailSettings").GetSection("FromMail").Value,to))
             {
                 message.Subject = "Usted ha solicitado un cambio de contraseña";
-                message.Body = GeneratePassword.newpassword();
+                message.Body = NewPassword;
                 message.IsBodyHtml = false;
 
                 SmtpClient smtp = new SmtpClient ();
@@ -33,6 +34,8 @@ namespace DietcalAPI.Services
                 smtp.Send(message);
                 System.Threading.Thread.Sleep(3000);
             }
+
+            return NewPassword;
         }
     }
 }
