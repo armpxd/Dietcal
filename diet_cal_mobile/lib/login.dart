@@ -15,15 +15,19 @@ class Login extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       'Diet',
-                      style: TextStyle(fontSize: 50),
+                      style: TextStyle(fontSize: 30),
                     ),
                     Text(
                       'cal',
-                      style: TextStyle(fontSize: 50),
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
               ),
+              Container(
+                child: TextField(),
+              )
             ],
           ),
         ),
