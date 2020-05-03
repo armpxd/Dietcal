@@ -8,6 +8,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _loginForm = GlobalKey<FormState>();
+  bool _rememberMeState = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +50,7 @@ class _LoginState extends State<Login> {
                               border: OutlineInputBorder()),
                           validator: (value) {
                             if (value.isEmpty) {
-                              return LoginLiterals.userInputValidator;
+                              return "";
                             }
                             return null;
                           },
@@ -66,7 +67,7 @@ class _LoginState extends State<Login> {
                               border: OutlineInputBorder()),
                           validator: (value) {
                             if (value.isEmpty) {
-                              return 'Please enter some text';
+                              return "";
                             }
                             return null;
                           },
@@ -75,25 +76,60 @@ class _LoginState extends State<Login> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text("Recordar Contraseña"),
+                          Text(LoginLiterals.passwordRememberMe),
                           Switch(
-                            value: true,
-                            onChanged: (bool valueChange) {},
+                            activeTrackColor: Color(0xff5ACD87),
+                            inactiveThumbColor: Color(0xff68EB9D),
+                            activeColor: Colors.white,
+                            value: _rememberMeState,
+                            onChanged: (bool valueChange) {
+                              setState(() {
+                                _rememberMeState = valueChange;
+                              });
+                            },
                           ),
                         ],
                       ),
                       Center(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          child: RaisedButton(
-                            onPressed: () {
-                              // Validate will return true if the form is valid, or false if
-                              // the form is invalid.
-                              if (_loginForm.currentState.validate()) {
-                                // Process data.
-                              }
-                            },
-                            child: Text('Iniciar Sección'),
+                          child: Container(
+                            height: 50.0,
+                            child: RaisedButton(
+                              onPressed: () {
+                                // Validate will return true if the form is valid, or false if
+                                // the form is invalid.
+                                if (_loginForm.currentState.validate()) {
+                                  // Process data.
+                                } else {}
+                              },
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(80.0)),
+                              padding: EdgeInsets.all(0.0),
+                              child: Ink(
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xff68EB9D),
+                                        Color(0xff50DF82)
+                                      ],
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                    ),
+                                    borderRadius: BorderRadius.circular(30.0)),
+                                child: Container(
+                                  constraints: BoxConstraints(
+                                      maxWidth: 300.0, minHeight: 50.0),
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    LoginLiterals.login,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -104,7 +140,13 @@ class _LoginState extends State<Login> {
               Center(
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Text("¿Olvidaste tu contraseña?"),
+                  child: Text(
+                    LoginLiterals.forgotPassword,
+                    style: TextStyle(
+                        color: Color(0xff5ACD87),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                  ),
                 ),
               )
             ],
