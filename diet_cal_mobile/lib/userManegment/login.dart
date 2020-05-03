@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constants.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -42,13 +43,13 @@ class _LoginState extends State<Login> {
                             bottom: 30, top: 40, left: 10, right: 10),
                         child: TextFormField(
                           decoration: const InputDecoration(
-                              icon: Icon(Icons.person),
-                              hintText: 'Coloque su nombre de usuario',
-                              labelText: 'Usuario',
+                              icon: LoginLiterals.userInputIcon,
+                              hintText: LoginLiterals.userInputHintText,
+                              labelText: LoginLiterals.userInputLabel,
                               border: OutlineInputBorder()),
                           validator: (value) {
                             if (value.isEmpty) {
-                              return 'Please enter some text';
+                              return LoginLiterals.userInputValidator;
                             }
                             return null;
                           },
@@ -59,9 +60,9 @@ class _LoginState extends State<Login> {
                             bottom: 30, left: 10, right: 10),
                         child: TextFormField(
                           decoration: const InputDecoration(
-                              icon: Icon(Icons.lock),
-                              hintText: 'Coloque su nombre de usuario',
-                              labelText: 'Usuario',
+                              icon: LoginLiterals.passwordInputIcon,
+                              hintText: LoginLiterals.passwordInputHintText,
+                              labelText: LoginLiterals.passwordInputLabel,
                               border: OutlineInputBorder()),
                           validator: (value) {
                             if (value.isEmpty) {
