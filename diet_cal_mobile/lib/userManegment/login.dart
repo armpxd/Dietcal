@@ -6,7 +6,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final _formKey = GlobalKey<FormState>();
+  final _loginForm = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class _LoginState extends State<Login> {
               ),
               Container(
                 child: Form(
-                  key: _formKey,
+                  key: _loginForm,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -88,7 +88,7 @@ class _LoginState extends State<Login> {
                             onPressed: () {
                               // Validate will return true if the form is valid, or false if
                               // the form is invalid.
-                              if (_formKey.currentState.validate()) {
+                              if (_loginForm.currentState.validate()) {
                                 // Process data.
                               }
                             },
