@@ -5,7 +5,7 @@ class LoginLiterals {
   static const String userInputLabel = 'Usuario';
   static const Icon userInputIcon = Icon(Icons.person);
 
-  static const String passwordInputHintText = 'Coloque su nombre de usuario';
+  static const String passwordInputHintText = 'Coloque su contraseña';
   static const String passwordInputLabel = 'Contraseña';
   static const Icon passwordInputIcon = Icon(Icons.lock);
 
@@ -14,4 +14,5 @@ class LoginLiterals {
   static const String login = "Iniciar Sección";
 
   static const String forgotPassword = "¿Olvidaste tu contraseña?";
+  static const String mandatoryField = "Este campo es obligatorio";
 }

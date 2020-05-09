@@ -9,6 +9,16 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _loginForm = GlobalKey<FormState>();
   bool _rememberMeState = false;
+  bool _loginFormValidationState = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //logic to verificate if the user have and token
+    //See how to manage local storage in flutter to put the token id there and consult when is necesary
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +27,7 @@ class _LoginState extends State<Login> {
           child: Column(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(top: 150),
+                padding: EdgeInsets.only(top: 100),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -41,7 +51,7 @@ class _LoginState extends State<Login> {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(
-                            bottom: 30, top: 40, left: 10, right: 10),
+                            bottom: 15, top: 90, left: 10, right: 10),
                         child: TextFormField(
                           decoration: const InputDecoration(
                               icon: LoginLiterals.userInputIcon,
@@ -50,7 +60,7 @@ class _LoginState extends State<Login> {
                               border: OutlineInputBorder()),
                           validator: (value) {
                             if (value.isEmpty) {
-                              return "";
+                              return LoginLiterals.mandatoryField;
                             }
                             return null;
                           },
@@ -58,7 +68,7 @@ class _LoginState extends State<Login> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            bottom: 30, left: 10, right: 10),
+                            bottom: 15, left: 10, right: 10),
                         child: TextFormField(
                           decoration: const InputDecoration(
                               icon: LoginLiterals.passwordInputIcon,
@@ -67,7 +77,7 @@ class _LoginState extends State<Login> {
                               border: OutlineInputBorder()),
                           validator: (value) {
                             if (value.isEmpty) {
-                              return "";
+                              return LoginLiterals.mandatoryField;
                             }
                             return null;
                           },
@@ -76,7 +86,10 @@ class _LoginState extends State<Login> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text(LoginLiterals.passwordRememberMe),
+                          Text(
+                            LoginLiterals.passwordRememberMe,
+                            style: TextStyle(color: Colors.grey, fontSize: 16),
+                          ),
                           Switch(
                             activeTrackColor: Color(0xff5ACD87),
                             inactiveThumbColor: Color(0xff68EB9D),
@@ -90,18 +103,30 @@ class _LoginState extends State<Login> {
                           ),
                         ],
                       ),
+                      Visibility(
+                        visible: false,
+                        child: Center(
+                            child: Padding(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Text(
+                            "Usuario o contraseña incorrecta",
+                            style: TextStyle(
+                                color: Colors.redAccent, fontSize: 16),
+                          ),
+                        )),
+                      ),
                       Center(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                          padding: const EdgeInsets.symmetric(vertical: 35.0),
                           child: Container(
                             height: 50.0,
                             child: RaisedButton(
                               onPressed: () {
-                                // Validate will return true if the form is valid, or false if
-                                // the form is invalid.
                                 if (_loginForm.currentState.validate()) {
-                                  // Process data.
-                                } else {}
+                                  //User login service call
+                                  //servicio de login deberia tener un flag para el remenber me y asi verificar
+                                  // si este es true para generar un token
+                                }
                               },
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(80.0)),
