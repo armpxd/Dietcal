@@ -54,13 +54,13 @@ class _LoginState extends State<Login> {
                             bottom: 15, top: 90, left: 10, right: 10),
                         child: TextFormField(
                           decoration: const InputDecoration(
-                              icon: LoginLiterals.userInputIcon,
-                              hintText: LoginLiterals.userInputHintText,
-                              labelText: LoginLiterals.userInputLabel,
+                              icon: LoginConstants.userInputIcon,
+                              hintText: LoginConstants.userInputHintText,
+                              labelText: LoginConstants.userInputLabel,
                               border: OutlineInputBorder()),
                           validator: (value) {
                             if (value.isEmpty) {
-                              return LoginLiterals.mandatoryField;
+                              return LoginConstants.mandatoryField;
                             }
                             return null;
                           },
@@ -71,13 +71,13 @@ class _LoginState extends State<Login> {
                             bottom: 15, left: 10, right: 10),
                         child: TextFormField(
                           decoration: const InputDecoration(
-                              icon: LoginLiterals.passwordInputIcon,
-                              hintText: LoginLiterals.passwordInputHintText,
-                              labelText: LoginLiterals.passwordInputLabel,
+                              icon: LoginConstants.passwordInputIcon,
+                              hintText: LoginConstants.passwordInputHintText,
+                              labelText: LoginConstants.passwordInputLabel,
                               border: OutlineInputBorder()),
                           validator: (value) {
                             if (value.isEmpty) {
-                              return LoginLiterals.mandatoryField;
+                              return LoginConstants.mandatoryField;
                             }
                             return null;
                           },
@@ -87,12 +87,14 @@ class _LoginState extends State<Login> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            LoginLiterals.passwordRememberMe,
+                            LoginConstants.passwordRememberMe,
                             style: TextStyle(color: Colors.grey, fontSize: 16),
                           ),
                           Switch(
-                            activeTrackColor: Color(0xff5ACD87),
-                            inactiveThumbColor: Color(0xff68EB9D),
+                            activeTrackColor:
+                                LoginConstants.switchActiveTrackColor,
+                            inactiveThumbColor:
+                                LoginConstants.switchInactiveThumbColor,
                             activeColor: Colors.white,
                             value: _rememberMeState,
                             onChanged: (bool valueChange) {
@@ -135,8 +137,8 @@ class _LoginState extends State<Login> {
                                 decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: [
-                                        Color(0xff68EB9D),
-                                        Color(0xff50DF82)
+                                        LoginConstants.buttonGradientLeftColor,
+                                        LoginConstants.buttonGradientRightColor,
                                       ],
                                       begin: Alignment.centerLeft,
                                       end: Alignment.centerRight,
@@ -147,7 +149,7 @@ class _LoginState extends State<Login> {
                                       maxWidth: 300.0, minHeight: 50.0),
                                   alignment: Alignment.center,
                                   child: Text(
-                                    LoginLiterals.login,
+                                    LoginConstants.login,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20),
@@ -166,9 +168,21 @@ class _LoginState extends State<Login> {
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
-                    LoginLiterals.forgotPassword,
+                    LoginConstants.forgotPassword,
                     style: TextStyle(
-                        color: Color(0xff5ACD87),
+                        color: LoginConstants.buttonForgotPasswordColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    LoginConstants.register,
+                    style: TextStyle(
+                        color: LoginConstants.buttonForgotPasswordColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ),
