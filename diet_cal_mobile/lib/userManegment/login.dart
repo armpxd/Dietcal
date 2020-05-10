@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
+import 'forgotPassword.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -19,6 +20,24 @@ class _LoginState extends State<Login> {
     //See how to manage local storage in flutter to put the token id there and consult when is necesary
   }
 
+  Widget flatCustomButton(action, text) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: FlatButton(
+          onPressed: () {
+            action();
+          },
+          child: Text(
+            text,
+            style: flatButtonTextStyle,
+          ),
+        ),
+      ),
+    );
+  }
+
+//LoginConstants.register
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -164,30 +183,10 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    LoginConstants.forgotPassword,
-                    style: TextStyle(
-                        color: LoginConstants.buttonForgotPasswordColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    LoginConstants.register,
-                    style: TextStyle(
-                        color: LoginConstants.buttonForgotPasswordColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              )
+              flatCustomButton(
+                  () => Navigator.pushNamed(context, ForgotPassword.id),
+                  LoginConstants.forgotPassword),
+              flatCustomButton(() => print("register"), LoginConstants.register)
             ],
           ),
         ),
