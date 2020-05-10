@@ -24,11 +24,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               ),
               Text(
-                "¿Olvido su contraseña?",
+                ForgotPasswordLiterals.forgotPassword,
                 style: TextStyle(fontSize: 20),
               ),
               Text(
-                "Se le enviara un correo indicando los siguientes pasos para cambiar su contraseña",
+                ForgotPasswordLiterals.forgotPasswordNextStep,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.grey,
@@ -45,13 +45,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             bottom: 15, top: 90, left: 10, right: 10),
                         child: TextFormField(
                           decoration: const InputDecoration(
-                              icon: LoginLiterals.userInputIcon,
-                              hintText: LoginLiterals.userInputHintText,
-                              labelText: LoginLiterals.userInputLabel,
+                              icon: ForgotPasswordLiterals.mailInputIcon,
+                              hintText:
+                                  ForgotPasswordLiterals.mailInputHintText,
+                              labelText: ForgotPasswordLiterals.mailInputLabel,
                               border: OutlineInputBorder()),
                           validator: (value) {
-                            if (value.isEmpty) {
-                              return LoginLiterals.mandatoryField;
+                            if (value.isEmpty ||
+                                !value.contains(".") ||
+                                !value.contains("@")) {
+                              return ForgotPasswordLiterals.mandatoryMail;
                             }
                             return null;
                           },
@@ -63,7 +66,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             child: Padding(
                           padding: const EdgeInsets.only(top: 15),
                           child: Text(
-                            "Este correo no esta registrado",
+                            ForgotPasswordLiterals.mailNotFound,
                             style: TextStyle(
                                 color: Colors.redAccent, fontSize: 16),
                           ),
@@ -78,9 +81,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               onPressed: () {
                                 if (_forgotPasswordForm.currentState
                                     .validate()) {
-                                  //User login service call
-                                  //servicio de login deberia tener un flag para el remenber me y asi verificar
-                                  // si este es true para generar un token
+                                  //validate if the mail is the correct one
                                 }
                               },
                               shape: RoundedRectangleBorder(
@@ -102,7 +103,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                       maxWidth: 300.0, minHeight: 50.0),
                                   alignment: Alignment.center,
                                   child: Text(
-                                    LoginLiterals.login,
+                                    ForgotPasswordLiterals.resetPassword,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20),
@@ -116,24 +117,22 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     ],
                   ),
                 ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    LoginLiterals.forgotPassword,
-                    style: TextStyle(
-                        color: Color(0xff5ACD87),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
               )
             ],
           ),
         ),
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(bottom: 120),
+        child: Text(
+          ForgotPasswordLiterals.register,
+          style: TextStyle(
+              color: Color(0xff5ACD87),
+              fontSize: 16,
+              fontWeight: FontWeight.w500),
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 }
