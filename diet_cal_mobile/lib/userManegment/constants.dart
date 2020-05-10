@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import '../appConstants.dart';
 
+const TextStyle flatButtonTextStyle = TextStyle(
+    color: LoginConstants.buttonForgotPasswordColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w500);
+
 class LoginConstants {
   static const String userInputHintText = 'Coloque su nombre de usuario';
   static const String userInputLabel = 'Usuario';
@@ -26,6 +31,11 @@ class LoginConstants {
 }
 
 class ForgotPasswordConstants {
+  static const String appBarTitle = appName;
+  static const Color doneIconColor = primaryColor;
+  static const String emailSend =
+      "A su correo debera de llegar una nueva contraseña de uso temporal";
+  static const String notUser = "¿Aun no tiene un usuario?";
   static const String mailInputHintText = 'Coloque su correo';
   static const String mailInputLabel = 'Correo';
   static const Icon mailInputIcon = Icon(Icons.mail);
