@@ -24,11 +24,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               ),
               Text(
-                ForgotPasswordLiterals.forgotPassword,
+                ForgotPasswordConstants.forgotPassword,
                 style: TextStyle(fontSize: 20),
               ),
               Text(
-                ForgotPasswordLiterals.forgotPasswordNextStep,
+                ForgotPasswordConstants.forgotPasswordNextStep,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.grey,
@@ -45,16 +45,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             bottom: 15, top: 90, left: 10, right: 10),
                         child: TextFormField(
                           decoration: const InputDecoration(
-                              icon: ForgotPasswordLiterals.mailInputIcon,
+                              icon: ForgotPasswordConstants.mailInputIcon,
                               hintText:
-                                  ForgotPasswordLiterals.mailInputHintText,
-                              labelText: ForgotPasswordLiterals.mailInputLabel,
+                                  ForgotPasswordConstants.mailInputHintText,
+                              labelText: ForgotPasswordConstants.mailInputLabel,
                               border: OutlineInputBorder()),
                           validator: (value) {
                             if (value.isEmpty ||
                                 !value.contains(".") ||
                                 !value.contains("@")) {
-                              return ForgotPasswordLiterals.mandatoryMail;
+                              return ForgotPasswordConstants.mandatoryMail;
                             }
                             return null;
                           },
@@ -66,7 +66,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             child: Padding(
                           padding: const EdgeInsets.only(top: 15),
                           child: Text(
-                            ForgotPasswordLiterals.mailNotFound,
+                            ForgotPasswordConstants.mailNotFound,
                             style: TextStyle(
                                 color: Colors.redAccent, fontSize: 16),
                           ),
@@ -103,7 +103,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                       maxWidth: 300.0, minHeight: 50.0),
                                   alignment: Alignment.center,
                                   child: Text(
-                                    ForgotPasswordLiterals.resetPassword,
+                                    ForgotPasswordConstants.resetPassword,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20),
@@ -125,7 +125,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 120),
         child: Text(
-          ForgotPasswordLiterals.register,
+          ForgotPasswordConstants.register,
           style: TextStyle(
               color: Color(0xff5ACD87),
               fontSize: 16,
